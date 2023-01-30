@@ -1,0 +1,14 @@
+{
+  "name": "main-package",
+  "version": "1.0.0",
+  "description": "Reproduction case",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "eslint": "^7.0.0"
+  },
+  "packageManager": "pnpm@7.25.1"
+}

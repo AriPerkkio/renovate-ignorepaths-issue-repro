@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install
+        run: pnpm install
+
+      - name: Prepare build for examples
+        run: npm pack
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: built-package
+          path: main-package-1.0.0.tgz
+
+  examples:
+    needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16, 18]
+        example-name: [example-a, example-b]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: built-package
+
+      - name: Build and test ${{ matrix.example-name }}
+        working-directory: ./examples/${{ matrix.example-name }}
+        run: pnpm install

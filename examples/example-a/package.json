@@ -1,0 +1,8 @@
+{
+  "name": "example-a",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "main-package": "file:../../main-package-1.0.0.tgz"
+  }
+}

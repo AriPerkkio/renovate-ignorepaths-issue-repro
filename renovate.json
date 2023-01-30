@@ -1,0 +1,20 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["schedule:daily"],
+  "labels": ["dependencies"],
+  "rangeStrategy": "bump",
+  "ignorePaths": ["**/examples/**"],
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "matchPackageNames": ["main-package"],
+      "enabled": false,
+      "description": "Local file links in examples"
+    },
+    {
+      "matchPaths": ["examples/**"],
+      "enabled": false,
+      "description": "Exclude examples"
+    }
+  ]
+}
