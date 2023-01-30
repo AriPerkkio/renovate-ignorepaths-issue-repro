@@ -1,0 +1,1 @@
+# renovate-ignorepaths-issue-repro
