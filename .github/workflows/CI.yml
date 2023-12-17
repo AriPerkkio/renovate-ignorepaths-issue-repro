@@ -27,7 +27,7 @@ jobs:
       - name: Prepare build for examples
         run: npm pack
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: built-package
           path: main-package-1.0.0.tgz
