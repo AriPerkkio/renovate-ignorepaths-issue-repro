@@ -10,5 +10,5 @@
   "dependencies": {
     "eslint": "^7.0.0"
   },
-  "packageManager": "pnpm@7.25.1"
+  "packageManager": "pnpm@9.12.2"
 }
